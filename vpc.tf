@@ -10,9 +10,9 @@ resource "aws_vpc" "myvpc"{
 }
 resource "aws_subnet" "pubsub" {
     vpc_id = aws_vpc.myvpc.id
-    cidr-block = "198.168.0.0/24"
-    avability_zone = "us-east-1"
-     aws_public_ip_on_launch = true
+    cidr-block = "198.168.0.0/18"
+    availability_zone = "us-east-1"
+     map_public_ip_on_launch = true
      
      tags = {
         name = "pubsubnet"
@@ -21,7 +21,7 @@ resource "aws_subnet" "pubsub" {
 resource "aws_subnet" "private" {
     vpc_id     = aws_vpc.myvpc.id
     cidr_block = "10.0.1.0/24" 
-    aws_public_ip_on_launch = false
+    map_public_ip_on_launch = false
   
     tags = {
       Name = "prisub"
@@ -35,15 +35,15 @@ resource "aws_internet_gateway" "igw" {
     }
   }
 
-  resource "aws_rout_table" "pubrt" {
+  resource "aws_route_table" "pubrt" {
     vpc_id = aws_vpc.myvpc.id
-    rout {
+    route_table_id {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_internet_gateway.igw.id
     }
   
     tags = {
-      Name = "routtable"
+      Name = "routetable"
     }
   }
   resource "aws_route_table_association" "attach" {
