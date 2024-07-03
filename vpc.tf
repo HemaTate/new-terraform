@@ -10,7 +10,7 @@ resource "aws_vpc" "myvpc"{
 }
 resource "aws_subnet" "pubsub" {
     vpc_id = aws_vpc.myvpc.id
-    cidr-block = "198.168.0.0/18"
+    cidr_block = "198.168.0.0/18"
     availability_zone = "us-east-1"
      map_public_ip_on_launch = true
      
@@ -37,7 +37,7 @@ resource "aws_internet_gateway" "igw" {
 
   resource "aws_route_table" "pubrt" {
     vpc_id = aws_vpc.myvpc.id
-    route_table_id {
+    route {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_internet_gateway.igw.id
     }
