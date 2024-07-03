@@ -82,5 +82,5 @@ resource "aws_internet_gateway" "igw" {
   }
   
   output "vpc_id" {
-    value = aws_vpc.vnet.id
+    value = aws_vpc.myvpc.id
   
