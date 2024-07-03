@@ -10,7 +10,7 @@ resource "aws_vpc" "myvpc"{
 }
 resource "aws_subnet" "pubsub" {
     vpc_id = aws_vpc.myvpc.id
-    cidr_block = "198.168.0.0/18"
+    cidr_block = "198.168.1.0/18"
     availability_zone = "us-east-1"
      map_public_ip_on_launch = true
      
