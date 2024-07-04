@@ -31,3 +31,10 @@ variable = "tags" {
      description = "definr var for tag"
      default = "my instance"
 }
+output "public_ip"{
+    value = aws_instance.inst.map_public_ip_on_launch
+
+}
+ami_id = "ami-06c68f701d8090592"
+instance_type = "t2.micro"
+key_name = "master"
