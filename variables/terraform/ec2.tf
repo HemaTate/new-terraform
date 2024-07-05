@@ -6,8 +6,8 @@ provider "aws" {
 resource "aws_instance" "sample" {
   ami = ami-01b799c439fd5516a
   instance_type = "t2.micro"
-
-  tags = {
+  key_name = "master"
+tags = {
     Name = "HelloWorld"
   }
 }
